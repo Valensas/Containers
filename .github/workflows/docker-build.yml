@@ -1,0 +1,44 @@
+name: Create and publish a Docker image
+
+on:
+  push:
+    tags: ['*/*']
+
+env:
+  REGISTRY: docker.io
+
+jobs:
+  extract-values:
+    runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.extract-image-tag.outputs.image }}
+      tag: ${{ steps.extract-image-tag.outputs.tag }}
+    steps:
+      - name: Extract image and tag
+        id: extract-image-tag
+        run: IFS='/' read IMAGE VERSION <<< "${GITHUB_REF_NAME}" && echo "image=$IMAGE" >> "$GITHUB_OUTPUT" && echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
+
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    needs: extract-values
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: ${{needs.extract-values.outputs.image}}
+          push: true
+          tags: ${{ env.REGISTRY }}/valensas/${{needs.extract-values.outputs.image}}:${{needs.extract-values.outputs.tag}}
