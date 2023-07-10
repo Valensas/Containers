@@ -6,7 +6,7 @@ Using static binaries, you can run your Rust binaries `FROM scratch`, allowing s
 ## Usage
 
 ```docker
-FROM ghcr.io/valensas/rust-musl:1.70.0 as build
+FROM valensas/rust-musl:1.70.0 as build
 
 WORKDIR /app/my-project
 
