@@ -1,7 +1,7 @@
 # GraalVM Static Image
 
 ```bash
-docker pull valensas/graalvm-static-image:java17-22.3.2
+docker pull valensas/graalvm-static-image:java21.0.1
 ```
 
 This container image is based on [GraalVM Native Image](https://github.com/graalvm/container/pkgs/container/native-image).
