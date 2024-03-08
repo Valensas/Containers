@@ -5,7 +5,7 @@ This image, based on [Postgres](https://hub.docker.com/_/postgres), adds support
 ## Usage
 
 ```bash
-docker run --name my-postgres -e POSTGRES_PASSWORD=mypassword valensas/postgres-partman:15.3-4.7.2
+docker run --name my-postgres -e POSTGRES_PASSWORD=mypassword valensas/postgres-partman:16.2-5.0.1
 ```
 
 ## Configuration
