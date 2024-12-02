@@ -1,7 +1,7 @@
 # Headfull Chrome
 
 ```bash
-docker pull valensas/headfull-chrom:java21-chrome131
+docker pull valensas/headfull-chrome:java21-chrome131
 ```
 
 This container image is based on [Ubuntu](https://hub.docker.com/_/ubuntu)
