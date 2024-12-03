@@ -9,7 +9,6 @@ RUN apt update -y && apt upgrade -y && \
     xvfb && \
     wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb && \
     dpkg -i google-chrome-stable_${CHROME_VERSION}_amd64.deb && \
-    apt-get -y remove --purge wget && \
     rm -rf /var/lib/apt/lists/* && rm google-chrome-stable_${CHROME_VERSION}_amd64.deb
 
 ENV DISPLAY=:99
