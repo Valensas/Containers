@@ -1,7 +1,7 @@
 # OCR Viewer
 
 ```bash
-docker pull valensas/ocr:1.13.2
+docker pull valensas/ocr:1.14.2
 ```
 
 Container image for the session viewer of [Open Code Review](https://github.com/alibaba/open-code-review) (OCR).
@@ -14,7 +14,7 @@ This image fetches that binary, verifies it against the release's `sha256sum.txt
 ```bash
 docker run --rm -p 5483:5483 \
   -v /path/to/sessions:/data/.opencodereview/sessions:ro \
-  valensas/ocr:1.13.2
+  valensas/ocr:1.14.2
 ```
 
 Then open http://localhost:5483.
@@ -35,8 +35,8 @@ The OCR version is set with the `OCR_VERSION` build argument:
 
 ```bash
 docker buildx build --platform linux/amd64 \
-  --build-arg OCR_VERSION=1.13.2 \
-  -t valensas/ocr:1.13.2 \
+  --build-arg OCR_VERSION=1.14.2 \
+  -t valensas/ocr:1.14.2 \
   ocr
 ```
 

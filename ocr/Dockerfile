@@ -1,5 +1,5 @@
 FROM alpine:3.22 AS fetch
-ARG OCR_VERSION=1.13.2
+ARG OCR_VERSION=1.14.2
 ARG TARGETARCH=amd64
 RUN apk add --no-cache ca-certificates curl
 RUN set -eux; \
@@ -14,7 +14,7 @@ RUN set -eux; \
     chmod +x /tmp/ocr
 
 FROM gcr.io/distroless/static-debian12:nonroot
-ARG OCR_VERSION=1.13.2
+ARG OCR_VERSION=1.14.2
 LABEL org.opencontainers.image.title="ocr-viewer" \
       org.opencontainers.image.version="${OCR_VERSION}" \
       org.opencontainers.image.source="https://github.com/alibaba/open-code-review"
